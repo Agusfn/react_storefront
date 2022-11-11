@@ -11,13 +11,15 @@ import Test from "./components/Test"
 
 function App() {
   return (
-    <Router>
-      <Navbar></Navbar>
-      <Routes>
-        <Route path="/" exact element={<ProductListPage/>} />
-        <Route path="/product" element={<ProductDetailsPage/>} />
-      </Routes>
-    </Router>
+    <div className='container'>
+      <Router>
+        <Navbar></Navbar>
+        <Routes>
+          <Route path="/" exact element={<ProductListPage/>} />
+          <Route path="/product" element={<ProductDetailsPage/>} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

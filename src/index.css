@@ -11,3 +11,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/**** Product list page *****/
+
+.product-item > img {
+  width: 100%
+}
+
+
+/**** Product details page ****/
+
+.specs-table td:nth-child(1) {
+  width: 40%
+}
+
+.product-option-container{
+  margin-bottom: 20px;
+}
+
+.product-option {
+  padding: 8px 15px;
+  background-color: #EEE;
+  cursor: pointer;
+  margin-left: 20px;
+  border: 1px solid #EEE;
+}
+
+
+.product-option:hover {
+  border: 1px solid #999;
+}

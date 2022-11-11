@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
+import ProductItem from "../../components/ProductItem/ProductItem";
 
 export default function ProductListPage() {
 
@@ -8,8 +9,31 @@ export default function ProductListPage() {
     });
 
     return (
-    <div>
-        Contenido pagina product list.
-    </div>
+      <div className='mt-4'>
+
+        <div className='d-flex justify-content-end'>
+          <div className=''>
+            <input type="text" className='form-control'></input>
+          </div>
+        </div>
+
+        <div className='row mt-4'>
+          <ProductItem></ProductItem>
+          <ProductItem></ProductItem>
+          <ProductItem></ProductItem>
+          <ProductItem></ProductItem>
+
+          <ProductItem></ProductItem>
+          <ProductItem></ProductItem>
+          <ProductItem></ProductItem>
+          <ProductItem></ProductItem>
+
+          <ProductItem></ProductItem>
+          <ProductItem></ProductItem>
+          <ProductItem></ProductItem>
+          <ProductItem></ProductItem>
+        </div>
+
+      </div>
     );
 }
