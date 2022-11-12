@@ -1,39 +1,48 @@
 import React, { Component, useState, useEffect } from 'react';
 import ProductItem from "../../components/ProductItem/ProductItem";
+import productApiService from "../../services/productApiService"
+import { useNavigate } from "react-router-dom";
 
 export default function ProductListPage() {
 
-    useEffect(() => {
-        console.log("product list page loaded")
-        console.log(process.env.REACT_APP_MY_VARIABLE)
+  const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+
+
+  useEffect(() => {
+
+    productApiService.getAllProducts().then(products => {
+      console.log("products", products);
+      setProducts(products);
     });
 
+  }, []);
+
+
+  const productElemens = products.map(product => {
+    const onProductPress = () => {
+      navigate("/product");
+    }
     return (
-      <div className='mt-4'>
+    <div key={product.id} className='col-lg-3 col-md-4 col-sm-6 mb-3'>
+      <ProductItem product={product} click={onProductPress} />
+    </div>);
+  });
 
-        <div className='d-flex justify-content-end'>
-          <div className=''>
-            <input type="text" className='form-control'></input>
-          </div>
+  return (
+    <div className='mt-4'>
+
+      <div className='d-flex justify-content-end'>
+        <div className='input-group' style={{maxWidth: "300px"}}>
+          <input type="text" className='form-control'></input>
+          <button className='btn btn-primary' onClick={() => {}}>Buscar</button>
         </div>
-
-        <div className='row mt-4'>
-          <ProductItem></ProductItem>
-          <ProductItem></ProductItem>
-          <ProductItem></ProductItem>
-          <ProductItem></ProductItem>
-
-          <ProductItem></ProductItem>
-          <ProductItem></ProductItem>
-          <ProductItem></ProductItem>
-          <ProductItem></ProductItem>
-
-          <ProductItem></ProductItem>
-          <ProductItem></ProductItem>
-          <ProductItem></ProductItem>
-          <ProductItem></ProductItem>
-        </div>
-
       </div>
-    );
+
+      <div className='row mt-4'>
+        {productElemens}
+      </div>
+
+    </div>
+  );
 }

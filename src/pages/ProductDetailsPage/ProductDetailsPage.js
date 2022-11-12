@@ -5,10 +5,12 @@ import img from '../../assets/test.png';
 export default function ProductDetailsPage() {
 
   const func = () => {
-    productsApiService.getProduct("ZmGrkLRPXOTpxsU4jjAcv").then(products => {
-      console.log("products", products)
+    productsApiService.getProduct("ZmGrkLRPXOTpxsU4jjAcv").then(product => {
+      console.log("product", product)
     })
   }
+
+
 
   return (
     <div className='mt-4'>
