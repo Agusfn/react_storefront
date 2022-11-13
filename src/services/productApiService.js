@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const endpointUrl = process.env.REACT_APP_STORE_API_URL + "/product";
 
-const productsApiService = {
+export const productsApiService = {
 
 
     getAllProducts: async() => {
@@ -17,5 +17,3 @@ const productsApiService = {
     }
 
 }
-
-export default productsApiService;

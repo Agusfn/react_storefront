@@ -1,28 +1,26 @@
-import React, { Component, useState } from 'react';
+import React from 'react';
 
 
-export default function ProductOptionsSelector(props) {
+export function ProductOptionsSelector({title, existingOptions, selectedOptionCode, onOptionCodeSelect}) {
 
-  const [selectedOptionCode, setSelectedOptionCode] = useState(null);
+  console.log("existingOptions", existingOptions)
 
-  console.log("options", props.options)
-
-  const optionsElems = props?.options?.map(option => {
-    const onOptionClick = () => setSelectedOptionCode(option.code);
+  const optionsElems = existingOptions ? existingOptions.map(option => {
+    const selectedClass = (selectedOptionCode === option.code) ? " product-option-selected" : "";
     return (
-      <div className={"product-option " + (selectedOptionCode == option.code ? " product-option-selected" : "")} key={option.code} onClick={onOptionClick}>
+      <div className={"product-option mt-1"+selectedClass} key={option.code} onClick={() => onOptionCodeSelect(option.code)}>
         {option.name}
-      </div>);
-  });
+      </div>
+    );
+  }) : null;
 
   return (
   <div className='product-option-container'>
-    <h5 className='mb-3'>{props.title}</h5>
+    <h5 className='mb-3'>{title}</h5>
     <div className='d-flex flex-wrap'>
       {optionsElems}
     </div>
   </div>
   );
-
 
 }

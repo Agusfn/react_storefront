@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 
-export default function ProductSpecsTable(props) {
+export function ProductSpecsTable(props) {
 
   const product = props.product;
+
+  const primaryCamSpecs = Array.isArray(product.primaryCamera) ? product.primaryCamera.join(" ") : 
+    product.primaryCamera;
 
   return (
     <table className='table specs-table'>
@@ -16,12 +19,6 @@ export default function ProductSpecsTable(props) {
         <td>Modelo: </td>
         <td>{product.model}</td>
       </tr>
-      <tr>
-        <td>Precio: </td>
-        <td>{product.price}</td>
-      </tr>
-
-
       <tr>
         <td>CPU: </td>
         <td>{product.cpu}</td>
@@ -45,18 +42,28 @@ export default function ProductSpecsTable(props) {
       <tr>
         <td>Cámaras: </td>
         <td>
-          {product.primaryCamera}
-          {product.secondaryCamera}
+          <ul>
+            {primaryCamSpecs && (
+              <li>Primaria: {primaryCamSpecs}</li>
+            )}
+            {product.secondaryCmera && (
+              <li>Secundaria: {product.secondaryCmera}</li>
+            )}
+          </ul>
         </td>
       </tr>
       <tr>
         <td>Dimensiones: </td>
         <td>{product.dimentions}</td>
       </tr>
-      <tr>
-        <td>Peso: </td>
-        <td>{product.weight}</td>
-      </tr>
+
+      {product.weight && 
+        <tr>
+          <td>Peso: </td>
+          <td>{product.weight} g</td>
+        </tr>
+      }
+
     </tbody>
   </table>
   );

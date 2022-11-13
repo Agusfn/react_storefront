@@ -28,8 +28,17 @@ code {
 
 /**** Product details page ****/
 
+.not-found-title {
+  text-align: center;
+  margin-top: 150px;
+}
+
 .specs-table td:nth-child(1) {
   width: 40%
+}
+
+.specs-table tr:last-child > td {
+  border-bottom: none;
 }
 
 .product-option-container{

@@ -1,16 +1,16 @@
-import React, { Component, useState, useEffect } from 'react';
-import ProductItem from "../../components/ProductItem/ProductItem";
-import productApiService from "../../services/productApiService"
+import React, { useState, useEffect } from 'react';
+import { productsApiService } from "../../services"
 import { useNavigate } from "react-router-dom";
+import { ProductItem } from "../../components"
 
-export default function ProductListPage() {
+export function ProductListPage() {
 
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
 
 
   useEffect(() => {
-    productApiService.getAllProducts().then(products => {
+    productsApiService.getAllProducts().then(products => {
       console.log("products", products);
       setProducts(products);
     });

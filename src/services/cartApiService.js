@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const endpointUrl = process.env.REACT_APP_STORE_API_URL + "/cart";
 
-const cartApiService = {
+export const cartApiService = {
 
     addProduct: async(id, colorCode, storageCode) => {
         const response = await axios.post(endpointUrl, {
@@ -14,5 +14,3 @@ const cartApiService = {
     }
 
 }
-
-export default cartApiService;
