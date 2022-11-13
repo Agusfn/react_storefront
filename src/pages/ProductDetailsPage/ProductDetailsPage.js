@@ -3,6 +3,7 @@ import { cartApiService, productsApiService } from "../../services";
 import { useParams } from "react-router-dom";
 import { ProductSpecsTable, ProductOptionsSelector } from "../../components";
 import { CartContext } from "../../contexts/CartContext"
+import { formatPrice } from '../../utils/numbers';
 
 
 export function ProductDetailsPage() {
@@ -23,7 +24,9 @@ export function ProductDetailsPage() {
     if(productId) {
       productsApiService.getProduct(productId).then(product => {
         console.log("product", product)
-        setProduct(product)
+        setProduct(product);
+        const productName = (product.brand ? product.brand+' ' : '') + (product.model ? product.model : '');
+        document.title = productName;
       }).catch(error => {
         console.log("error", error.message);
       }).finally(() => {
@@ -35,7 +38,14 @@ export function ProductDetailsPage() {
   }, []);
 
 
-  const canAddProductToCart = (product && ((product.options?.storages && selectedStorageCode) || !product.options?.storages) && 
+  useEffect(() => {
+    const productName = (product.brand ? product.brand+' ' : '') + (product.model ? product.model : '');
+
+    document.title = product ? productName : "";
+  }, [product]);
+
+
+  const optionsSelected = (product && ((product.options?.storages && selectedStorageCode) || !product.options?.storages) && 
     ((product.options?.colors && selectedColorCode) || !product.options?.colors)) ? true : false;
 
 
@@ -72,9 +82,17 @@ export function ProductDetailsPage() {
             <div className='card mb-3'>
               <div className='card-body p-4'>
 
-                <h3 className='mb-3'>{productName}</h3>
+                <h3 className='mb-4'>{productName}</h3>
 
-                <div className='mb-3'>Precio: 230€</div>
+                <div className='mb-4 product-price'>
+                  Precio:
+                  {product.price && (
+                    <span className='price-val'>{formatPrice(product.price, 2)}</span>
+                  )}
+                  {!product.price && (
+                    <span>&nbsp;No disponible</span>
+                  )}
+                </div>
 
                 <div className='row'>
                   <div className='col-lg-6'>
@@ -99,14 +117,17 @@ export function ProductDetailsPage() {
                   </div>
                 </div>
 
-                <div className='text-center'>
+                <div className='text-center mt-3'>
                   <button 
-                    className='btn btn-primary mt-3 w-75' 
-                    disabled={!canAddProductToCart || isAddingToCart}
+                    className='btn btn-primary w-75' 
+                    disabled={!optionsSelected || isAddingToCart || !product.price}
                     onClick={onAddToCartClick}>
                     Añadir al carrito
                     {isAddingToCart && <i className="fa fa-circle-o-notch fa-spin ms-2"></i>}
                   </button>
+                  {!optionsSelected && ( 
+                    <div style={{fontSize: "13px"}}>Selecciona las opciones para añadir al carro</div>
+                  )}
                 </div>
 
               </div>

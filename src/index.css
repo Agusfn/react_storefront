@@ -13,6 +13,9 @@ code {
 }
 
 
+/****** Nav bar *****/
+
+
 /**** Product list page *****/
 
 .product-item {
@@ -33,12 +36,14 @@ code {
   margin-top: 150px;
 }
 
-.specs-table td:nth-child(1) {
-  width: 40%
+.product-price {
+  font-size: 17px;
 }
 
-.specs-table tr:last-child > td {
-  border-bottom: none;
+.product-price .price-val {
+  margin-left: 20px;
+  font-size: 28px;
+  color: #367ff2;
 }
 
 .product-option-container{
@@ -61,4 +66,12 @@ code {
 
 .product-option:hover {
   border: 1px solid #999;
+}
+
+.specs-table td:nth-child(1) {
+  width: 40%
+}
+
+.specs-table tr:last-child > td {
+  border-bottom: none;
 }

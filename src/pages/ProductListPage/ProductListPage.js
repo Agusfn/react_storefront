@@ -10,6 +10,8 @@ export function ProductListPage() {
 
 
   useEffect(() => {
+    document.title = "Lista de productos";
+
     productsApiService.getAllProducts().then(products => {
       console.log("products", products);
       setProducts(products);
