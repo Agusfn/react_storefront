@@ -19,14 +19,32 @@ code {
 /**** Product list page *****/
 
 .product-item {
-  border-right: 1px solid #EEE;
-  border-bottom: 1px solid #EEE;
   padding: 15px;
+  border-right: 1px solid #E9E9E9;
 }
 
 .product-item > img {
   width: 100%
 }
+
+.product-container:nth-child(4n) > .product-item {
+  border-right: none;
+}
+
+.product-item .product-link {
+  color: #6a6a6a;
+  text-decoration: none;
+}
+
+.product-item .product-link:hover {
+  color: #222;
+  text-decoration: underline;
+}
+
+.product-item .price {
+  color: #367ff2;
+}
+
 
 
 /**** Product details page ****/

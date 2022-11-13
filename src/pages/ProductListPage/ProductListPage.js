@@ -21,7 +21,7 @@ export function ProductListPage() {
 
   const productElements = products.map(product => {
     return (
-    <div key={product.id} className='col-lg-3 col-md-4 col-sm-6 mb-3'>
+    <div key={product.id} className='product-container col-lg-3 col-md-4 col-sm-6 mb-4'>
       <ProductItem product={product} />
     </div>);
   });
