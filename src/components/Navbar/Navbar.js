@@ -23,16 +23,18 @@ export function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className='navbar-nav ms-md-4 me-auto'>
             <li className='nav-item'>
-              <Link className={'nav-link' + (location.pathname == "/" ? " active" : "")} to="/">Lista de productos</Link>
+              <Link className={'nav-link' + (location.pathname === "/" ? " active" : "")} to="/">Lista de productos</Link>
             </li>
             {location.pathname.startsWith("/product") && (<>
               <li className='nav-item nav-link d-none d-md-block'>/</li>
               <li className='nav-item'><Link className='nav-link active'>Detalles de producto</Link></li>
             </>)}
           </ul>
-          <div className='me-3'>
-            Carrito: {cartItems.length}
-          </div>
+
+          <button type="button" className="btn btn-light">
+            Carrito <span className="badge bg-secondary">{cartItems.length}</span>
+          </button>
+
         </div>
 
       </div>

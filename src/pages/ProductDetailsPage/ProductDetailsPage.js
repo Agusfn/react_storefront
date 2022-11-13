@@ -32,7 +32,7 @@ export function ProductDetailsPage() {
     } else {
       setIsProductLoading(false);
     }
-  }, []);
+  }, [productId]);
 
 
   const addProductVariationToCart = (colorCode, storageCode) => {

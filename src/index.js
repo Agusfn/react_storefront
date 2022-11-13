@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import $ from 'jquery';
-import Popper from 'popper.js';
+/*import $ from 'jquery';
+import Popper from 'popper.js';*/
 import 'font-awesome/css/font-awesome.min.css';
 
 import React from 'react';
