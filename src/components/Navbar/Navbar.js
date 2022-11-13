@@ -27,7 +27,7 @@ export function Navbar() {
             </li>
             {location.pathname.startsWith("/product") && (<>
               <li className='nav-item nav-link d-none d-md-block'>/</li>
-              <li className='nav-item'><Link className='nav-link active' to="/product">Detalles de producto</Link></li>
+              <li className='nav-item'><Link className='nav-link active'>Detalles de producto</Link></li>
             </>)}
           </ul>
           <div className='me-3'>

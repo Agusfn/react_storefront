@@ -3,13 +3,11 @@ import React from 'react';
 
 export function ProductOptionsSelector({title, existingOptions, selectedOptionCode, onOptionCodeSelect}) {
 
-  console.log("existingOptions", existingOptions)
-
   const optionsElems = existingOptions ? existingOptions.map(option => {
     const selectedClass = (selectedOptionCode === option.code) ? " product-option-selected" : "";
     return (
       <div className={"product-option mt-1"+selectedClass} key={option.code} onClick={() => onOptionCodeSelect(option.code)}>
-        {option.name}
+        {(option.name && option.name != " ") ? option.name : "(Sin nombre)"}
       </div>
     );
   }) : null;
