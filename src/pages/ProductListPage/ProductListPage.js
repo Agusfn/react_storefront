@@ -10,22 +10,17 @@ export default function ProductListPage() {
 
 
   useEffect(() => {
-
     productApiService.getAllProducts().then(products => {
       console.log("products", products);
       setProducts(products);
     });
-
   }, []);
 
 
-  const productElemens = products.map(product => {
-    const onProductPress = () => {
-      navigate("/product");
-    }
+  const productElements = products.map(product => {
     return (
     <div key={product.id} className='col-lg-3 col-md-4 col-sm-6 mb-3'>
-      <ProductItem product={product} click={onProductPress} />
+      <ProductItem product={product} />
     </div>);
   });
 
@@ -40,7 +35,7 @@ export default function ProductListPage() {
       </div>
 
       <div className='row mt-4'>
-        {productElemens}
+        {productElements}
       </div>
 
     </div>
