@@ -20,7 +20,7 @@ export function ProductDetailsPage() {
   useEffect(() => {
     if(productId) {
       productsApiService.getProduct(productId).then(product => {
-        console.log("product", product)
+        //console.log("product", product)
         setProduct(product);
         const productName = (product.brand ? product.brand+' ' : '') + (product.model ? product.model : '');
         document.title = productName;
@@ -40,7 +40,7 @@ export function ProductDetailsPage() {
 
     // Call for cart API service
     cartApiService.addProduct(product.id, colorCode, storageCode).then(response => {
-      console.log("add to cart response", response);
+      //console.log("add to cart response", response);
       // Add to local storage cart
       addToCart(product.id, colorCode, storageCode);
     }).finally(() => {

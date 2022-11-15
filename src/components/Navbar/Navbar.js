@@ -7,8 +7,6 @@ export function Navbar() {
   const { cartItems } = useContext(CartContext);
   const location = useLocation();
 
-  console.log("current location", location);
-
   return (
     <div className='navbar navbar-expand-md navbar-light bg-light'>
       
@@ -32,7 +30,7 @@ export function Navbar() {
           </ul>
 
           <button type="button" className="btn btn-light">
-            Carrito <span className="badge bg-secondary">{cartItems.length}</span>
+            Carrito <span className="badge bg-secondary" id="cartCount">{cartItems.length}</span>
           </button>
 
         </div>

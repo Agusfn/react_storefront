@@ -19,7 +19,8 @@ export function ProductItem(props) {
             <img 
               src={product?.imgUrl ? product.imgUrl : logo} 
               alt={productName}
-              style={{maxHeight: "200px", objectFit: "contain"}} 
+              style={{maxHeight: "200px", objectFit: "contain"}}
+              aria-label={"productImage"}
             />
           </div>
         </Link>

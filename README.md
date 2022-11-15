@@ -1,19 +1,22 @@
-## Comandos disponibles
 
+## Ejecutar la aplicación en modo desarrollo
 
-### `npm start`
+Asegurarse de tener las dependencias instaladas: `npm i`.
 
-Ejecutar la aplicación en modo desarrollo.\
+Ejecutar `npm start`.
+
 Abre [http://localhost:3000](http://localhost:3000) para verlo en tu navegador.
 
 
-Ejecuta las pruebas en modo interactivo.\
+## Empaquetar aplicación para producción
 
-### `npm run build`
+Ejecutar `npm run build`.
 
-Empaqueta la aplicación para producción a la carpeta `build`.\
+Empaqueta la aplicación para producción a la carpeta `build`.
 
 
-### Ejecutar pruebas
+## Ejecutar pruebas
 
-Debes tener node 16 instalado, y luego ejecutar `npm test`.
+Asegurarse de tener node v16 instalado.
+
+Ejecutar `npm test`.

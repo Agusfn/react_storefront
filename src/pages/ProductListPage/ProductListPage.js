@@ -13,7 +13,7 @@ export function ProductListPage() {
     document.title = "Lista de productos";
 
     productsApiService.getAllProducts().then(products => {
-      console.log("products", products);
+      //console.log("products", products);
       setAllProducts(products);
       setFilteredProducts(products);
     }).finally(() => {
@@ -24,7 +24,6 @@ export function ProductListPage() {
 
   const onSearchbarChange = (event) => {
     const term = event.target.value;
-    console.log("searchTerm", term)
 
     if(term) {
       // Reload filtered results array
@@ -33,7 +32,6 @@ export function ProductListPage() {
         ((product.brand && product.brand.toLowerCase().includes(termLower)) || 
           (product.model && product.model.toLowerCase().includes(termLower))) ? true : false
       );
-      console.log("filteredItems", filteredItems)
       
       // Set new array
       setFilteredProducts(filteredItems);
@@ -57,7 +55,13 @@ export function ProductListPage() {
 
       <div className='d-flex justify-content-end'>
         <div className='input-group' style={{maxWidth: "300px"}}>
-          <input type="text" className='form-control' onChange={onSearchbarChange}></input>
+          <input 
+            type="text" 
+            className='form-control' 
+            onChange={onSearchbarChange}
+            placeholder={"Ingresa el nombre del producto"}
+            aria-label="searchInput"
+          />
           <button className='btn btn-primary' onClick={() => {}}>Buscar</button>
         </div>
       </div>

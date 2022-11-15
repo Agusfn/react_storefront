@@ -11,7 +11,6 @@ export const productsApiService = {
     },
 
     getProduct: async(productId) => {
-        console.log("getProduct")
         const response = await axios.get(endpointUrl + "/" + productId);
         return response.data;
     }
