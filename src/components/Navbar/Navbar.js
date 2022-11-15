@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Link, useLocation } from "react-router-dom";
-import { CartContext } from "../../contexts/CartContext"
+import { StorefrontContext } from "../../contexts/StorefrontContext"
 
 export function Navbar() {
 
-  const { cartItems } = useContext(CartContext);
+  const { cartItems } = useContext(StorefrontContext);
   const location = useLocation();
 
   return (

@@ -1,25 +1,38 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useContext } from 'react';
 import { productsApiService } from "../../services"
 import { ProductItem } from "../../components"
+import { StorefrontContext } from "../../contexts/StorefrontContext"
 
 export function ProductListPage() {
 
-  const [areProductsLoading, setAreProductsLoading] = useState(true);
-  const [allProducts, setAllProducts] = useState([]);
+  const { existingProducts, setExistingProducts, lastProductsSetUnix } = useContext(StorefrontContext);
+
+  const [areProductsLoading, setAreProductsLoading] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
 
   useEffect(() => {
     document.title = "Lista de productos";
 
-    productsApiService.getAllProducts().then(products => {
-      //console.log("products", products);
-      setAllProducts(products);
-      setFilteredProducts(products);
-    }).finally(() => {
-      setAreProductsLoading(false);
-    });
+    setFilteredProducts(existingProducts);
+    fetchProductsIfDataExpired();
   }, []);
+
+
+
+  const fetchProductsIfDataExpired = () => {
+
+    if(lastProductsSetUnix < Date.now() - (60 * 60 * 1000)) {
+      setAreProductsLoading(true);
+      productsApiService.getAllProducts().then(products => {
+        console.log("fetched products from API")
+        setExistingProducts(products);
+        setFilteredProducts(products);
+      }).finally(() => {
+        setAreProductsLoading(false);
+      });
+    }
+  }
 
 
   const onSearchbarChange = (event) => {
@@ -28,7 +41,7 @@ export function ProductListPage() {
     if(term) {
       // Reload filtered results array
       const termLower = term.toLowerCase();
-      const filteredItems = allProducts.filter(product => 
+      const filteredItems = existingProducts.filter(product => 
         ((product.brand && product.brand.toLowerCase().includes(termLower)) || 
           (product.model && product.model.toLowerCase().includes(termLower))) ? true : false
       );
@@ -36,7 +49,7 @@ export function ProductListPage() {
       // Set new array
       setFilteredProducts(filteredItems);
     } else {
-      setFilteredProducts(allProducts);
+      setFilteredProducts(existingProducts);
     }
   }
 

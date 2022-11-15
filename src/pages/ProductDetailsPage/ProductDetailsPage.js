@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { cartApiService, productsApiService } from "../../services";
 import { useParams } from "react-router-dom";
 import { ProductSpecsTableCard, ProductPurchaseOptionsCard } from "../../components";
-import { CartContext } from "../../contexts/CartContext"
+import { StorefrontContext } from "../../contexts/StorefrontContext"
 
 
 export function ProductDetailsPage() {
@@ -11,7 +11,7 @@ export function ProductDetailsPage() {
   const [product, setProduct] = useState(false);
   const [isAddingToCart, setIsAddingToCart] = useState(false);
 
-  const { addToCart } = useContext(CartContext);
+  const { addToCart } = useContext(StorefrontContext);
   const params = useParams();
   const productId = params.productId;
 
