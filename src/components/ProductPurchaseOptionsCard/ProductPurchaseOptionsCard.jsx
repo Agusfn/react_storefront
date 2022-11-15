@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { ProductOptionsSelector } from "../../components";
+import { ProductOptionsSelector } from "../ProductOptionsSelector/ProductOptionsSelector";
 import { formatPrice } from '../../utils/numbers';
 
 
