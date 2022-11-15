@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ProductListPage, ProductDetailsPage } from "./pages/index"
 import { Navbar } from "./components/index"
 import { CartContextProvider } from "./contexts/CartContext"
+import React from 'react';
+
 
 function App() {
   return (

@@ -7,6 +7,9 @@ Ejecutar `npm start`.
 
 Abre [http://localhost:3000](http://localhost:3000) para verlo en tu navegador.
 
+## Comprobación de código
+
+Ejecutar `npm run lint`.
 
 ## Empaquetar aplicación para producción
 
